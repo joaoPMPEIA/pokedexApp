@@ -200,6 +200,42 @@
       </ion-item-options>
     </ion-item-sliding>
 
+    <ion-item-sliding>
+      <ion-item color="dark">
+
+        <ion-chip color="light" slot="start">
+          <ion-label color="rock">409</ion-label>
+        </ion-chip>
+
+        <ion-label>
+          <div>
+            <h2>Rampardos</h2>
+            <ion-badge color="rock">Rock</ion-badge>
+            
+          </div>
+        </ion-label>
+
+        <ion-thumbnail slot="end">
+          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/409.png">
+        </ion-thumbnail>
+
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  
+    <ion-item-sliding>
+      <ion-item color="dark">
+        <ion-label>Item 2</ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
 
  
   
