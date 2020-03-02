@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DadosPokemonPage } from '../dados-pokemon/dados-pokemon.page';
 import { DadosService } from '../servicos/dados.service';
 import { Router } from '@angular/router';
+import { PokedexApiService } from '../servicos/pokedex-api.service';
 
 @Component({
   selector: 'app-home',
@@ -72,8 +73,17 @@ export class HomePage {
   ];
   public listaFiltrada = [];
 
-  constructor(public dadosService: DadosService, public router: Router) {
-    this.resetarLista();
+  public listaPokemonsApi: any;
+
+  constructor(public dadosService: DadosService, public router: Router, public pokeApi: PokedexApiService) {
+    this.buscaPokemonApi();
+  }
+
+  public buscaPokemonApi(offset = 0) {
+    this.pokeApi.listarPokemons(offset).subscribe(dados=>{
+      this.listaPokemonsApi = dados['result'];
+      console.log(this.listaPokemonsApi);
+    });
   }
 
   public resetarLista() {
