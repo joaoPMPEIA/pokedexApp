@@ -7,236 +7,36 @@
 </ion-header>
 
 <ion-content color="dark">
-  <ion-searchbar placeholder="Buscar Pokemon" color="medium"></ion-searchbar>
+  <!--Barra de pesquisa-->
+  <ion-searchbar placeholder="Buscar Pokémon" color="medium"
+    (ionChange)="buscarPokemon($event)"></ion-searchbar>
 
-  
-    <ion-item-sliding>
-      <ion-item color="dark">
+  <!--lista de busca-->
+  <ion-item-sliding *ngFor="let pokemon of listaFiltrada">
+    
+    <ion-item color="dark" (click)="abrirDadosPokemon(pokemon)" >
 
-        <ion-chip color="light" slot="start">
-          <ion-label color="grass">001</ion-label>
-        </ion-chip>
+      <ion-chip color="light" slot="start">
+        <ion-label [color]="pokemon.tipos[0] | lowercase">{{pokemon.numero}}</ion-label>
+      </ion-chip>      
 
-        <ion-label>
-          <div>
-            <h2>Bulbasaur</h2>
-            <ion-badge color="grass">Grass</ion-badge>
-            <ion-badge color="tertiary">Poison</ion-badge>
-          </div>
-        </ion-label>
+      <ion-label>
+        <div>
+          <h2>{{pokemon.nome}}</h2>
+          <ion-badge [color]="tipo | lowercase" *ngFor="let tipo of pokemon.tipos">{{tipo}}</ion-badge>
+        </div>
+      </ion-label>
 
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png">
-        </ion-thumbnail>
+      <ion-thumbnail slot="end">
+        <img src="{{pokemon.img}}">
+      </ion-thumbnail>     
 
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  
-    <ion-item-sliding>
-      <ion-item color="dark">
-        <ion-label>Item 2</ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
+    </ion-item>
+    <ion-item-options side="start">
+      <ion-item-option color="danger">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
 
-
-
-
-    <ion-item-sliding>
-      <ion-item color="dark">
-
-        <ion-chip color="light" slot="start">
-          <ion-label color="fire">004</ion-label>
-        </ion-chip>
-
-        <ion-label>
-          <div>
-            <h2>Charmander</h2>
-            <ion-badge color="fire">Fire</ion-badge>
-            
-          </div>
-        </ion-label>
-
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png">
-        </ion-thumbnail>
-
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  
-    <ion-item-sliding>
-      <ion-item color="dark">
-        <ion-label>Item 2</ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-
-
-    <ion-item-sliding>
-      <ion-item color="dark">
-
-        <ion-chip color="light" slot="start">
-          <ion-label color="water">007</ion-label>
-        </ion-chip>
-
-        <ion-label>
-          <div>
-            <h2>Squitle</h2>
-            <ion-badge color="water">water</ion-badge>
-            
-          </div>
-        </ion-label>
-
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png">
-        </ion-thumbnail>
-
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  
-    <ion-item-sliding>
-      <ion-item color="dark">
-        <ion-label>Item 2</ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-
-
-    <ion-item-sliding>
-      <ion-item color="dark">
-
-        <ion-chip color="light" slot="start">
-          <ion-label color="eletric">025</ion-label>
-        </ion-chip>
-
-        <ion-label>
-          <div>
-            <h2>pikachu</h2>
-            <ion-badge color="eletric">eletric</ion-badge>
-            
-          </div>
-        </ion-label>
-
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png">
-        </ion-thumbnail>
-
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  
-    <ion-item-sliding>
-      <ion-item color="dark">
-        <ion-label>Item 2</ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-
-
-
-    <ion-item-sliding>
-      <ion-item color="dark">
-
-        <ion-chip color="light" slot="start">
-          <ion-label color="psychic">150</ion-label>
-        </ion-chip>
-
-        <ion-label>
-          <div>
-            <h2>Mewtwo</h2>
-            <ion-badge color="psychic">psychic</ion-badge>
-            
-          </div>
-        </ion-label>
-
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/150.png">
-        </ion-thumbnail>
-
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  
-    <ion-item-sliding>
-      <ion-item color="dark">
-        <ion-label>Item 2</ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <ion-item-sliding>
-      <ion-item color="dark">
-
-        <ion-chip color="light" slot="start">
-          <ion-label color="rock">409</ion-label>
-        </ion-chip>
-
-        <ion-label>
-          <div>
-            <h2>Rampardos</h2>
-            <ion-badge color="rock">Rock</ion-badge>
-            
-          </div>
-        </ion-label>
-
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/409.png">
-        </ion-thumbnail>
-
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option color="danger">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  
-    <ion-item-sliding>
-      <ion-item color="dark">
-        <ion-label>Item 2</ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-
- 
-  
 </ion-content>

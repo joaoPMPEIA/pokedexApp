@@ -15,6 +15,7 @@ export class DadosService {
     if (nome && nome.trim() !== '') {
       // Cria um indice no array com o nome do dado e coloca os dados dentro.
       this.dados[nome.trim()] = dados;
+      //trim retira os espaços em branco da direita e da esquerda
     }
   }
 
