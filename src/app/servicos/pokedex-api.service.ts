@@ -10,12 +10,16 @@ export class PokedexApiService {
 
   constructor(public http: HttpClient) { }
 
-  public listarPokemons(offset:Number, limit = 20) {
+  //metodos
+  public listarPokemons(offset: Number, limit = 20){
     return this.http.get(`${this.url}/?offset=${offset}&limit=${limit}`);
   }
 
   public buscaPorNumero(numero: Number){
-    return this.http.get(`${this.url}/${numero}`);
+    return this.http.get(`${this.url}/?${numero}`);
   }
 
+  public buscarPokemonUrl(url: string){
+    return this.http.get(url);
+  }
 }

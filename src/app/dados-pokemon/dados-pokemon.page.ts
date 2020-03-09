@@ -9,17 +9,16 @@ import { Router } from '@angular/router';
 })
 export class DadosPokemonPage implements OnInit {
 
-public pokemon;
+  public pokemon;
 
-  constructor(public dadosService: DadosService, public router: Router) {
+  constructor(public dadosService: DadosService, public router: Router) { 
     this.pokemon = this.dadosService.getDados('dadosPokemon')
     
     if(!this.pokemon){
-      //Volta para a lista se não tiver os dados do pokemon
+      //volta para lista se nao tiver os dados do pokemon
       this.router.navigateByUrl('/home');
     }
-
-   }
+  }
 
   ngOnInit() {
   }
